@@ -93,22 +93,22 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - name: "coredns"
-      image: "quay.io/oriedge/k8s_gateway"
-      imagePullPolicy: IfNotPresent
-      args: ["-conf", "/etc/coredns/Corefile"]
-      volumeMounts:
-        - name: config-volume
-          mountPath: /etc/coredns
-      resources:
-        limits:
-          cpu: 100m
-          memory: 128Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
-        ports:
-          - {containerPort: 53, protocol: UDP, name: udp-53}
-          - {containerPort: 53, protocol: TCP, name: tcp-53}
+          image: "quay.io/oriedge/k8s_gateway"
+          imagePullPolicy: IfNotPresent
+          args: ["-conf", "/etc/coredns/Corefile"]
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/coredns
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - {containerPort: 53, protocol: UDP, name: udp-53}
+            - {containerPort: 53, protocol: TCP, name: tcp-53}
       volumes:
         - name: config-volume
           configMap:
